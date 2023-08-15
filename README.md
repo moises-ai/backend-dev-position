@@ -2,7 +2,7 @@
 
 # Backend developer application guide
 
-## Creating a GraphQL API: CRUD and Caching
+## Build a GraphQL API: CRUD and Caching
 
 Welcome to the guide for applying as a backend developer! In this document, you'll find instructions on how to build a GraphQL API with essential features like CRUD operations and caching.
 
@@ -14,13 +14,12 @@ Welcome to the guide for applying as a backend developer! In this document, you'
 * Feel free to use any ORM or query builder
 
 ### Functional Prerequisites
-* Begin by creating a query and mutation for the _User_ type, which should also encompass Instruments, and Preferences_ subtypes. Develop the corresponding resolvers for these fields as defined in the schema
-  * type _Instruments_ can be an array of skill and instruments, eg. [{ instrument: 'guitar', skill: 10 }]
-  * type _Preferences_ can be object, eg. { pinnedPlaylists: ['<uuid>'], pushNotification: true }
-  * And _User_ contains all these types above, id and email
+* Begin by creating a query and mutation for the _User_ type, which should also contain _Instruments_ subtypes. Develop the corresponding resolvers for these fields as defined in the schema
+  * type _Instruments_ can be an array of skills and instruments, e.g. _[{ instrument: 'guitar', skill: 10 }]_
+  * And _User_ contain Instruments type, id, and email
 * Define resolvers for the query and mutation fields specified in the schema
-* Implement cache middleware in your resolvers to handle caching and cache invalidation
 * Set up the server with Apollo Server
+* Implement cache middleware in your resolvers to handle caching and cache invalidation
 * Implement caching mechanisms to enhance performance. Cache user data upon queries and ensure the cache is invalidated when user updates occur.
 * Document your work, and explain the setup process for launching your GraphQL API. Provide examples of sample queries and mutations involving users
 
