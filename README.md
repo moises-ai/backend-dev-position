@@ -2,7 +2,7 @@
 
 # Backend developer application guide
 
-## Creating a GraphQL API: CRUD, Authentication Middleware, and Caching
+## Creating a GraphQL API: CRUD, Authentication, and Caching
 
 Welcome to the guide for applying as a backend developer! In this document, you'll find instructions on how to build a GraphQL API with essential features like CRUD operations, authentication middleware, and caching.
 
