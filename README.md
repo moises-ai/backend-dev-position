@@ -25,7 +25,7 @@ Welcome to the guide for applying as a backend developer! In this document, you'
 * Integrate your schema, resolvers, and authentication middleware with Apollo Server
 * Implement caching mechanisms to enhance performance. Cache user data upon queries and ensure the cache is invalidated when user updates occur.
 * Implement cache middleware in your resolvers to handle caching and cache invalidation.
-* Document your work in detail within the README.md file. Explain the setup process for launching your GraphQL API. Provide illustrative examples of sample queries and mutations involving users, goals, instruments, and social profiles.
+* Document your work in detail within the README.md file. Explain the setup process for launching your GraphQL API. Provide illustrative examples of sample queries and mutations involving users
 * Elaborate on your caching strategy and how it improves query performance.
 
 ### How to Share Your Work
