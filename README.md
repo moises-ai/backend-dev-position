@@ -14,10 +14,10 @@ Welcome to the guide for applying as a backend developer! In this document, you'
 * Feel free to use any ORM or query builder
 
 ### Functional Prerequisites
-* Begin by creating a query and mutation for the _User_ type, which should also contain _Instruments_ subtypes. Develop the corresponding resolvers for these fields as defined in the schema
+* Begin by creating a query and mutation for the _User_ type, which should also contain _Instruments_ subtypes
   * type _Instruments_ can be an array of skills and instruments, e.g. _[{ instrument: 'guitar', skill: 10 }]_
   * And _User_ contain Instruments type, id, and email
-* Define resolvers for the query and mutation fields specified in the schema
+* Define resolvers for the query and mutation for users
 * Set up the server with Apollo Server
 * Implement cache middleware in your resolvers to handle caching and cache invalidation
 * Implement caching mechanisms to enhance performance. Cache user data upon queries and ensure the cache is invalidated when user updates occur.
