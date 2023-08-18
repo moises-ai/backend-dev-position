@@ -29,7 +29,6 @@ docker compose up
     - Define mutation to add/remove song
     - Define mutation to add/remove playlist
     - Define mutation to add/remove song from playlist
-    - Define mutation to add/remove playlist from user
     
 2. Implement a **Cache-Aside strategy**
    * Lazy Loading: The query User should be fully cached through Lazy Loading (Implement availability with _cache hit_ and _cache miss_)

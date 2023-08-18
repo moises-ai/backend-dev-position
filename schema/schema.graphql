@@ -1,0 +1,36 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  songs: [Song]
+  playlists: [Playlist]
+}
+
+type Song {
+  id: ID!
+  name: String!
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  songs: [Song]
+}
+
+type Query {
+  user(id: ID!): User
+  songs(userId: ID!): [Song]
+  playlists(userId: ID!): [Playlist]
+}
+
+type Mutation {
+  createUser(name: String!, email: String!): User
+  
+  createPlaylist(userId: ID!, name: String!): Playlist
+  deletePlaylist(id: ID!): Boolean
+
+  createSong(userId: ID!, name: String!): Song
+  deleteSong(id: ID!): Boolean
+
+  addSongToPlaylist(songId: ID!, playlistId: ID!): Playlist
+}
