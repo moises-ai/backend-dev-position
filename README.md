@@ -18,7 +18,7 @@ docker compose up
 
 - Use knex to query builder
 - Use **Redis** for caching (add to docker-compose)
-- Use Apollo sandbox to run queries (leave queries organized so maybe we can run them live)
+- Use Apollo sandbox to run queries (leave queries organized so we can run them live)
 
 ### Functional Prerequisites
 
@@ -29,6 +29,7 @@ docker compose up
     - Define mutation to add/remove song
     - Define mutation to add/remove playlist
     - Define mutation to add/remove song from playlist
+    - Define mutation to update user
     
 2. Implement a **Cache-Aside strategy**
    * Lazy Loading: The query User should be fully cached through Lazy Loading (Implement availability with _cache hit_ and _cache miss_)
@@ -60,10 +61,11 @@ docker compose up
    * Write Through - reverse the order of how the cache is populated (only after lazy loading)
       + Should change the cache first and then the Postgres, apply on the following mutations:
           - add / remove songs for a user
+          - add / remove songs for a playlist
           - add / remove playlists for a user
       + Keep cache lists sorted
       
-3. PLUS: Write integration tests
+3. PLUS: Write integration tests for resolvers, mutations and cache
 
 
 ### How to Share Your Work
