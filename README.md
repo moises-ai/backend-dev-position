@@ -6,22 +6,66 @@
 
 Welcome to the guide for applying as a backend developer! In this document, you'll find instructions on how to build a GraphQL API with essential features like CRUD operations and caching.
 
+### Get started
+
+Run 
+```sh 
+npm i
+docker compose up
+```
+
 ### Prerequisites
-* Node
-* GraphQL (Apollo)
-* Use docker and docker compose
-* Feel free to use any database / cache management that you master
-* Feel free to use any ORM or query builder
+
+- Use knex to query builder
+- Use **Redis** for caching (add to docker-compose)
+- Use Apollo sandbox to run queries (leave queries organized so maybe we can run them live)
 
 ### Functional Prerequisites
-* Begin by creating a query and mutation for the _User_ type, which should also contain _Instruments_ subtypes
-  * type _Instruments_ can be an array of skills and instruments, e.g. _[{ instrument: 'guitar', skill: 10 }]_
-  * And _User_ contain Instruments type, id, and email
-* Define resolvers for the query and mutation for users
-* Set up the server with Apollo Server
-* Implement cache middleware in your resolvers to handle caching and cache invalidation
-* Implement caching mechanisms to enhance performance. Cache user data upon queries and ensure the cache is invalidated when user updates occur.
-* Document your work, and explain the setup process for launching your GraphQL API. Provide examples of sample queries and mutations involving users
+
+1. We expect all resolvers to be implemented (use pre-defined types on **schema.graphql** to guide)
+    - Define resolvers to query for user (sorted playlists by name)
+    - Define resolvers to query for songs (sorted by name)
+    - Define resolvers to query for playlists (sorted by name)
+    - Define mutation to add/remove song
+    - Define mutation to add/remove playlist
+    - Define mutation to add/remove song from playlist
+    - Define mutation to add/remove playlist from user
+    
+2. Implement a **Cache-Aside strategy**
+   * Lazy Loading: The query User should be fully cached through Lazy Loading (Implement availability with _cache hit_ and _cache miss_)
+      - Ensure the cache invalidation when changes occur in user email only
+      - E.g., query User
+        
+      ```
+      query Query($userId: ID!) {
+        user(id: $userId) {
+          id
+          email
+          name
+          playlists {
+            id
+            name
+            songs {
+              id
+              name
+            }
+          }
+          songs {
+            id
+            name
+          }
+        }
+      }
+      ```
+
+   * Write Through - reverse the order of how the cache is populated (only after lazy loading)
+      + Should change the cache first and then the Postgres, apply on the following mutations:
+          - add / remove songs for a user
+          - add / remove playlists for a user
+      + Keep cache lists sorted
+      
+3. PLUS: Write integration tests
+
 
 ### How to Share Your Work
 When you're ready to share your completed application, follow these steps:
